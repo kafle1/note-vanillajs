@@ -17,4 +17,4 @@ Open `index.html` in a browser.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
