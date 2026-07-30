@@ -18,6 +18,14 @@ addBtn.addEventListener("click", function (e) {
   showNotes();
 });
 
+// Escape user-entered text before it goes into innerHTML, so a note
+// containing "<" or "&" doesn't get parsed as markup.
+function escapeHtml(text) {
+  let div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 // Function to show elements from localStorage
 function showNotes() {
   let notes = localStorage.getItem("notes");
@@ -32,7 +40,7 @@ function showNotes() {
             <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Note ${index + 1}</h5>
-                        <p class="card-text"> ${element}</p>
+                        <p class="card-text"> ${escapeHtml(element)}</p>
                         <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
                     </div>
                 </div>`;
